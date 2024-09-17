@@ -11,11 +11,11 @@ interface Client {
     updated_at: string;         // Fecha y hora en que se actualizó el registro
 }
 
-interface propType{
-    route:string;
-    title:string;
+interface propType {
+    route: string;
+    title: string;
 }
-export function template({route,title}:propType) {
+export function template({ route, title }: propType) {
     const [data, setData] = useState<Client[]>([])
     async function getData() {
         try {

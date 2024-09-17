@@ -70,7 +70,7 @@ export function Drivers() {
                                         </div>
                                     </div>
                                 </div>
-                                <div className="flex  items-center ml-auto ">
+                                <div className="flex  items-center ml-auto gap-2 ">
                                     <FiEdit size={40} className=" text-main_skyblue border-2 p-1 rounded-full border-main_yellow border-opacity-50" />
                                     <MdOutlineDeleteSweep size={40} className=" text-red-500 border-2 p-1 rounded-full border-main_yellow border-opacity-50" />
                                 </div>

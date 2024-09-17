@@ -72,7 +72,7 @@ export function Payments() {
                         {data.map((data) => (
                             <div key={data.id} className="p-[1dvh] my-[0.5dvh] grid grid-cols-2  rounded-md   justify-start items-center bg-main_blue hover:bg-main_blue_hover  ">
                                 <div className="flex items-center">
-                                    <IoIosCash size={42} className=" text-main_orange border-2 p-1 rounded-full border-main_yellow border-opacity-50" />
+                                    <IoIosCash size={42} className=" text-main_yellow border-2 p-1 rounded-full border-main_yellow border-opacity-50" />
                                     <div className="mr-auto ml-[2dvh] ">
                                         <div className="text-">
                                             <h1 className="text-zinc-50 ">{data.payment_date} </h1>
@@ -80,7 +80,7 @@ export function Payments() {
                                         </div>
                                     </div>
                                 </div>
-                                <div className="flex  items-center ml-auto ">
+                                <div className="flex  items-center ml-auto gap-2 ">
                                     <FiEdit size={40} className=" text-main_skyblue border-2 p-1 rounded-full border-main_yellow border-opacity-50" />
                                     <MdOutlineDeleteSweep size={40} className=" text-red-500 border-2 p-1 rounded-full border-main_yellow border-opacity-50" />
                                 </div>

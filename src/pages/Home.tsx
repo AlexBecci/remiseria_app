@@ -1,10 +1,13 @@
 import { useEffect, useState } from "react";
 import { FiEdit } from "react-icons/fi";
-import { IoIosAddCircle, IoIosCar, IoIosCheckboxOutline, IoIosSearch, IoMdContact } from "react-icons/io";
+import { IoIosAddCircle, IoIosCar, IoIosCash, IoIosCheckboxOutline, IoIosSearch, IoMdContact } from "react-icons/io";
 import { MdOutlineCarRental, MdOutlineDeleteSweep } from "react-icons/md";
 import { ScrollContainer } from "../components/logic/ScrollLogic";
 import { ModalLogic } from "../components/logic/Modal";
 import { ModalCreateTrip } from "../components/modals/ModalCreateTrip";
+import { ModalFinishedTrip } from "../components/modals/ModalFinishedTrip";
+import { toast, ToastContainer } from "react-toastify";
+import { ModalDeleteTrip } from "../components/modals/ModalDeleteTrip";
 
 interface Trip {
     id: number;
@@ -18,8 +21,19 @@ interface Trip {
     updated_at: string; // Igual que con created_at
 }
 
+interface dto_finishTrip {
+    end_time: string
+    distance: number
+    fare: number
+    id: number
+}
+
 export function Home() {
     const [data, setData] = useState<Trip[]>([])
+    const [body, setBody] = useState<dto_finishTrip>({ distance: 0, end_time: '', fare: 0, id: 0 })
+    const [modalFinish, setModalFinish] = useState<boolean>(false)
+    const [modalDelete, setModalDelete] = useState<boolean>(false)
+    const [idDelete, setIdDelete] = useState<number>(0)
     const [modal, setModal] = useState<boolean>(false)
     async function getData() {
         try {
@@ -59,12 +73,47 @@ export function Home() {
     function openModal() {
         setModal(true)
     }
+    /*     function openModalDelete(number: number) {
+            console.log(number)
+            setIdDelete(number)
+            setModalDelete(true)
+        } */
     function closeModal() {
         setModal(false)
+        setModalFinish(false)
+        setModalDelete(false)
     }
     function closeModalOk() {
         setModal(false)
         getData()
+        showToast('creado')
+    }
+    function showToast(value: string) {
+        // Show a toast and handle the onClose callback
+        toast.success(`Viaje ${value} exitosamente!`, {
+            position: "top-right",
+            autoClose: 3000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            rtl: false,
+            pauseOnFocusLoss: true,
+            draggable: true,
+            pauseOnHover: true,
+            theme: "light",
+            onClose: () => {
+                console.log('Toast cerrado'); // Log message when the toast closes
+            }
+        });
+    }
+    function closeModalOkTrip() {
+        setModalFinish(false)
+        getData()
+        showToast('finalizado')
+    }
+    function closeModalOkDeleteTrip() {
+        setModalDelete(false)
+        getData()
+        showToast('cancelado')
     }
     useEffect(() => {
         getData()
@@ -72,6 +121,18 @@ export function Home() {
 
     return (
         <>
+            <ToastContainer
+                position="top-right"
+                autoClose={3000}
+                hideProgressBar={false}
+                newestOnTop={false}
+                closeOnClick
+                rtl={false}
+                pauseOnFocusLoss
+                draggable
+                pauseOnHover
+                theme="light"
+            />
             <div className="mt-[2rem]  p-[1rem] items-center grid grid-cols-2">
                 {/* HERO ADD CLIENT*/}
                 <div className="mb-[4dvh] col-span-2 grid grid-cols-2 gap-4 items-center">
@@ -104,10 +165,10 @@ export function Home() {
                                             </div>
                                         </div>
                                     </div>
-                                    <div className="flex  items-center ml-auto ">
+                                    <div className="flex  items-center ml-auto  gap-2">
                                         <IoMdContact size={40} className=" text-main_skyblue border-2 p-1 rounded-full border-main_yellow border-opacity-50" />
-                                        <IoIosCheckboxOutline size={40} className=" text-green-500 border-2 p-1 rounded-full border-main_yellow border-opacity-50" />
-                                        <MdOutlineDeleteSweep size={40} className=" text-red-500 border-2 p-1 rounded-full border-main_yellow border-opacity-50" />
+                                        <IoIosCheckboxOutline onClick={() => { setModalFinish(true), setBody({ distance: parseInt(data.distance), end_time: '', fare: parseInt(data.fare), id: data.id }) }} size={40} className=" text-green-500 border-2 p-1 rounded-full border-main_yellow border-opacity-50" />
+                                        <MdOutlineDeleteSweep onClick={() => { setModalDelete(true), setIdDelete(data.id) }} size={40} className=" text-red-500 border-2 p-1 rounded-full border-main_yellow border-opacity-50" />
                                     </div>
                                 </div>
                             )
@@ -131,7 +192,8 @@ export function Home() {
                                             </div>
                                         </div>
                                     </div>
-                                    <div className="flex  items-center ml-auto ">
+                                    <div className="flex  items-center ml-auto gap-2 ">
+                                        <IoIosCash size={40} className=" text-main_yellow border-2 p-1 rounded-full border-main_yellow border-opacity-50" />
                                         <IoMdContact size={40} className=" text-main_skyblue border-2 p-1 rounded-full border-main_yellow border-opacity-50" />
                                         <MdOutlineDeleteSweep size={40} className=" text-red-500 border-2 p-1 rounded-full border-main_yellow border-opacity-50" />
                                     </div>
@@ -145,6 +207,16 @@ export function Home() {
             {modal && (
                 <ModalLogic isOpen={true} onClose={closeModal}>
                     <ModalCreateTrip onClose={closeModal} onCloseOk={closeModalOk} />
+                </ModalLogic>
+            )}
+            {modalFinish && (
+                <ModalLogic isOpen={true} onClose={closeModal}>
+                    <ModalFinishedTrip id={body.id} distance={body.distance} fare={body.fare} onClose={closeModal} onCloseOk={closeModalOkTrip} />
+                </ModalLogic>
+            )}
+            {modalDelete && (
+                <ModalLogic isOpen={true} onClose={closeModal}>
+                    <ModalDeleteTrip id={idDelete} onClose={closeModal} onCloseOk={closeModalOkDeleteTrip} />
                 </ModalLogic>
             )}
         </>

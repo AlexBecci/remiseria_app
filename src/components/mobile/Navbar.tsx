@@ -71,12 +71,12 @@ export function NavBarMobile() {
                     style={{ maxHeight: maxHeight, overflowY: 'auto', overflowX: "auto" }}
                     className={`absolute  left-0 top-full w-full transition-all duration-500 ease-in-out ${tab ? 'opacity-100' : 'opacity-100'} ${tab ? 'h-96' : 'h-0'} overflow-hidden`}
                 >
-                    <div className="bg-main_orange  shadow-lg   p-4">
+                    <div className="bg-gradient-to-b from-main_orange to-main_orange_hover  shadow-lg   p-4">
                         {options.map((option, index) => (
                             <div key={index} className="py-2">
                                 <h1
                                     onClick={() => { setTab(false), navigate(`${option.route}`) }}
-                                    className="cursor-pointer hover:text-blue-500"
+                                    className="cursor-pointer hover:text-main_cyan text-black"
                                 >
                                     {option.name}
                                 </h1>
