@@ -1,5 +1,6 @@
 import { useMediaQuery } from "react-responsive"
 import { NavBarMobile } from "../mobile/Navbar"
+import { Outlet } from "react-router-dom"
 
 export function View() {
     const isMobile = useMediaQuery({ maxHeight: 639 })
@@ -17,6 +18,9 @@ export function View() {
             {isMobile && (
                 <NavBarMobile />
             )}
+            <main>
+                <Outlet />
+            </main>
         </div>
     )
 }

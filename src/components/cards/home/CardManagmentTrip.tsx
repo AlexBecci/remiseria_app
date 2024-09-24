@@ -88,7 +88,7 @@ export function CardManagmentTrip() {
         getVehicles()
     }, []);
     return (
-        <div className="p-4 my-[2rem] bg-slate-500 shadow-lg rounded-sm">
+        <div className="p-4 my-[2rem] shadow-lg rounded-sm">
             <div className="grid grid-cols-1 text-start mx-auto justify-center gap-4">
                 <h1>Gestión de Viajes</h1>
                 <div className="flex flex-col justify-center">

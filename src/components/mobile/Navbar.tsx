@@ -49,14 +49,14 @@ export function NavBarMobile() {
     }, []);
 
     return (
-        <div className="relative bg-main_orange  flex flex-col ">
-            <header className=" shadow-md p-2 text-black relative z-10">
+        <div className="relative bg-textBlue  flex flex-col ">
+            <header className=" shadow-md p-2 text-white relative z-10">
                 <div className="container mx-auto flex justify-between items-center">
-                    <h1 className="text-xl">Remiseria</h1>
+                    <h1 className="text-xl">Remisería</h1>
                     <div className="flex justify-between items-center gap-4">
                         <button
                             onClick={() => setTab(!tab)}
-                            className="bg-main_blue_hover shadow-sm text-main_orange  p-2 rounded-md"
+                            className="bg-buttonBlue shadow-sm text-main_blue_hover  p-2 rounded-md"
                         >
                             {tab ? (
                                 <CiSquareChevUp size={24} />
@@ -71,12 +71,12 @@ export function NavBarMobile() {
                     style={{ maxHeight: maxHeight, overflowY: 'auto', overflowX: "auto" }}
                     className={`absolute  left-0 top-full w-full transition-all duration-500 ease-in-out ${tab ? 'opacity-100' : 'opacity-100'} ${tab ? 'h-96' : 'h-0'} overflow-hidden`}
                 >
-                    <div className="bg-gradient-to-b from-main_orange to-main_orange_hover  shadow-lg   p-4">
+                    <div className="bg-gradient-to-b from-textBlue to-main_blue_hover  shadow-lg   p-4">
                         {options.map((option, index) => (
                             <div key={index} className="py-2">
                                 <h1
                                     onClick={() => { setTab(false), navigate(`${option.route}`) }}
-                                    className="cursor-pointer hover:text-main_cyan text-black"
+                                    className="cursor-pointer hover:text-main_cyan text-white"
                                 >
                                     {option.name}
                                 </h1>

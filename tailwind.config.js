@@ -22,7 +22,12 @@ export default {
         main_yellow_hover: '#e4a300',
         main_orange: '#fb8500',
         main_orange_hover: '#e57200',
-
+        //nuevos colores
+        textBlue: '#003B5C',
+        subText: '#B0B3B8',
+        buttonBlue: '#4A90E2',
+        buttonGreen: '#5D9B6E',
+        yellowCake: '#F7EA00'
       }
     },
   },
