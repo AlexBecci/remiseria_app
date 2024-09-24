@@ -38,11 +38,11 @@ export function CardNavigate() {
             <h1>Gestión de Remisería</h1>
             <div className="grid grid-cols-2 sm:grid-cols-1  gap-4">
                 {links.map((link, index) => (
-                    <button onClick={() => navigate(link.link)} className={`${currentPath === link.link ? "border-2 border-red-600" : ""} p-2 border-sm bg-blue-500 text-white shadow-sm `}>
+                    <button key={index} onClick={() => navigate(link.link)} className={`${currentPath === link.link ? "border-2 border-red-600" : ""} p-2 border-sm bg-blue-500 text-white shadow-sm `}>
                         {link.name}
                     </button>
                 ))}
             </div>
         </div>
     )
-}
+} 

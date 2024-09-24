@@ -9,7 +9,7 @@ interface form_data {
     distance: number
     fare: number
 }
-export function CardManagmentTrip() {
+export function CardManagmentTrips() {
     interface Client {
         id: number;                 // Identificador único del cliente
         first_name: string;         // Nombre del cliente
@@ -43,6 +43,10 @@ export function CardManagmentTrip() {
     const {
         register, handleSubmit,
     } = useForm<form_data>();
+
+    function sendData(data: form_data) {
+        console.log(data)
+    }
     async function getClients() {
         try {
             const result = await fetch('http://localhost:3000/api/clients', {
@@ -88,7 +92,7 @@ export function CardManagmentTrip() {
         getVehicles()
     }, []);
     return (
-        <div className="p-4 my-[2rem] bg-slate-500 shadow-lg rounded-sm">
+        <form onSubmit={handleSubmit(sendData)} className="p-4 my-[2rem] bg-white shadow-md rounded-sm">
             <div className="grid grid-cols-1 text-start mx-auto justify-center gap-4">
                 <h1>Gestión de Viajes</h1>
                 <div className="flex flex-col justify-center">
@@ -129,7 +133,8 @@ export function CardManagmentTrip() {
                         />
                     </div>
                 </div>
+                <button className="p-2 border-sm bg-blue-500 text-white shadow-sm">Agregar </button>
             </div>
-        </div>
+        </form>
     )
 }
