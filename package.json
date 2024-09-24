@@ -10,7 +10,11 @@
     "preview": "vite preview"
   },
   "dependencies": {
+<<<<<<< HEAD
     "dotenv": "^16.4.5",
+=======
+    "date-fns": "^4.1.0",
+>>>>>>> a9a695c83f26d6344d4c0dc13d4f37651d8504fc
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-hook-form": "^7.53.0",

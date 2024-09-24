@@ -9,7 +9,7 @@ interface form_data {
     distance: number
     fare: number
 }
-export function CardManagmentTrips() {
+export function CardManagmentVehicle() {
     interface Client {
         id: number;                 // Identificador único del cliente
         first_name: string;         // Nombre del cliente
@@ -43,10 +43,6 @@ export function CardManagmentTrips() {
     const {
         register, handleSubmit,
     } = useForm<form_data>();
-
-    function sendData(data: form_data) {
-        console.log(data)
-    }
     async function getClients() {
         try {
             const result = await fetch('http://localhost:3000/api/clients', {
@@ -92,13 +88,9 @@ export function CardManagmentTrips() {
         getVehicles()
     }, []);
     return (
-<<<<<<<< HEAD:src/components/cards/home/CardManagmentTrips.tsx
-        <form onSubmit={handleSubmit(sendData)} className="p-4 my-[2rem] bg-white shadow-md rounded-sm">
-========
         <div className="p-4 my-[2rem] shadow-lg rounded-sm">
->>>>>>>> a9a695c83f26d6344d4c0dc13d4f37651d8504fc:src/components/cards/home/CardManagmentTrip.tsx
             <div className="grid grid-cols-1 text-start mx-auto justify-center gap-4">
-                <h1>Gestión de Viajes</h1>
+                <h1>Gestión de Vehiculos</h1>
                 <div className="flex flex-col justify-center">
                     <label className="mr-auto">Vehiculo</label>
                     <input type="text" className="block w-full pl-1 pr-3 py-2 rounded-md border border-gray-300 shadow-sm placeholder:text-black focus:outline-none focus:ring-2 focus:ring-inset focus:ring-bageDark sm:text-sm" placeholder="Jose C Paz" />
@@ -137,8 +129,7 @@ export function CardManagmentTrips() {
                         />
                     </div>
                 </div>
-                <button className="p-2 border-sm bg-blue-500 text-white shadow-sm">Agregar </button>
             </div>
-        </form>
+        </div>
     )
 }
