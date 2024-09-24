@@ -1,7 +1,5 @@
 import { useEffect, useState } from "react";
-import { useForm } from "react-hook-form";
 import { AiOutlineCloseCircle } from "react-icons/ai";
-import { useNavigate } from "react-router-dom";
 import { formatDateToMySQL } from "./ModalCreateTrip";
 /* import { toast, ToastContainer } from "react-toastify"; */
 

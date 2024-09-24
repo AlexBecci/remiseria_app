@@ -50,7 +50,7 @@ export function NavBarMobile() {
 
     return (
         <div className="relative bg-main_orange  flex flex-col ">
-            <header className=" shadow-md p-4 text-black relative z-10">
+            <header className=" shadow-md p-2 text-black relative z-10">
                 <div className="container mx-auto flex justify-between items-center">
                     <h1 className="text-xl">Remiseria</h1>
                     <div className="flex justify-between items-center gap-4">

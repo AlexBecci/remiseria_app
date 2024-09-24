@@ -1,13 +1,12 @@
 import { useEffect, useState } from "react";
-import { FiEdit } from "react-icons/fi";
-import { IoIosAddCircle, IoIosCar, IoIosCash, IoIosCheckboxOutline, IoIosSearch, IoMdContact } from "react-icons/io";
-import { MdOutlineCarRental, MdOutlineDeleteSweep } from "react-icons/md";
-import { ScrollContainer } from "../components/logic/ScrollLogic";
-import { ModalLogic } from "../components/logic/Modal";
-import { ModalCreateTrip } from "../components/modals/ModalCreateTrip";
-import { ModalFinishedTrip } from "../components/modals/ModalFinishedTrip";
+import { IoIosAddCircle, IoIosCar, IoIosCash, IoIosCheckboxOutline,  IoMdContact } from "react-icons/io";
+import {  MdOutlineDeleteSweep } from "react-icons/md";
+import { ScrollContainer } from "../../components/logic/ScrollLogic";
+import { ModalLogic } from "../../components/logic/Modal";
+import { ModalCreateTrip } from "../../components/modals/ModalCreateTrip";
+import { ModalFinishedTrip } from "../../components/modals/ModalFinishedTrip";
 import { toast, ToastContainer } from "react-toastify";
-import { ModalDeleteTrip } from "../components/modals/ModalDeleteTrip";
+import { ModalDeleteTrip } from "../../components/modals/ModalDeleteTrip";
 
 interface Trip {
     id: number;

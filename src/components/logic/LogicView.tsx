@@ -2,21 +2,19 @@ import { useMediaQuery } from "react-responsive"
 import { NavBarMobile } from "../mobile/Navbar"
 
 export function View() {
-    const isDesktopOrLaptop = useMediaQuery({
-        query: '(min-width: 1224px)'
-    })
-    const isBigScreen = useMediaQuery({ query: '(min-width: 1824px)' })
-    const isTabletOrMobile = useMediaQuery({ query: '(max-width: 1224px)' })
+    const isMobile = useMediaQuery({ maxHeight: 639 })
+    const isTablet = useMediaQuery({ minHeight: 640, maxHeight: 1023 })
+    const isDesktop = useMediaQuery({ minHeight: 1024 })
 
     return (
         <div className="">
-            {isDesktopOrLaptop && (
-                <></>
-            )}
-            {isBigScreen && (
+            {isDesktop && (
                 <NavBarMobile />
             )}
-            {isTabletOrMobile && (
+            {isTablet && (
+                <NavBarMobile />
+            )}
+            {isMobile && (
                 <NavBarMobile />
             )}
         </div>

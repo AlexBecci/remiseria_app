@@ -30,7 +30,7 @@ export function ModalDeleteTrip({ onClose, onCloseOk, id }: dto_modal) {
                 throw new Error('failed');
             }
 
-            
+
             console.log('response-->', response);
             onCloseOk()
 
